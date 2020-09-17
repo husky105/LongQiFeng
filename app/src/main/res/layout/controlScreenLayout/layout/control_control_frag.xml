@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:visibility="visible"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/controlLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="@string/roomName"/>
+            <TextView
+                android:id="@+id/Room_Name_Of_ControlPage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="example"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="@string/deviceStatus"/>
+            <TextView
+                android:id="@+id/Device_Status_Of_ControlPage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="example"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="19"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/DeviceStatusSetting"
+                android:padding="2dp"
+                />
+            <!--
+            android:typeface="normal":设置字体类型
+            android:track="":设置开关的轨迹图片
+            android:textOff="开"：设置开关checked的文字
+            android:textOn="关"：设置开关关闭时的文字
+            android:thumb="":设置开关的图片
+            android:switchMinWidth=""：开关最小宽度
+            android:switchPadding="":设置开关 与文字的空白距离
+            android:switchTextAppearance="":设置文本的风格
+            android:checked="":设置初始选中状态
+            android:splitTrack="true":是否设置一个间隙，让滑块与底部图片分隔（API 21及以上）
+            android:showText="true"：设置是否显示开关上的文字（API 21及以上）
+            -->
+            <Switch
+                android:typeface="normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="@string/Open"
+                android:textOff="@string/Close"
+                android:minWidth="20sp"
+                android:splitTrack="false"
+                android:showText="false"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/windowAngleControl"
+                android:padding="2dp"
+                />
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="4dp"
+                android:minHeight="4dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/bottom_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

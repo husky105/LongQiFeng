@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="roomName">房间名称</string>
+    <string name="deviceStatus">设备状态</string>
+    <string name="DeviceStatusSetting">设备状态设置</string>
+    <string name="windowAngleControl">窗户角度控制</string>
+    <string name="Open">开启</string>
+    <string name="Close">关闭</string>
+</resources>

@@ -1,5 +1,6 @@
 package com.example.longqifeng.controlScreen
 
+import android.graphics.Point
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +18,8 @@ class ControlActivityFragment : Fragment() {
         return inflater.inflate(R.layout.control_control_frag, container, false)
     }
 
-    fun refresh(RoomName:String, DeviceStatus:String){
-        controlLayout.visibility = View.VISIBLE //设置为可见
+    fun refresh(RoomName: String, DeviceStatus: String){
+        controlLayout?.visibility = View.VISIBLE //设置为可见
         Room_Name_Of_ControlPage.text = RoomName //显示房间名称
         Device_Status_Of_ControlPage.text = DeviceStatus //设备状态
     }

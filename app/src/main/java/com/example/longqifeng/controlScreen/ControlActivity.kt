@@ -1,12 +1,15 @@
 package com.example.longqifeng.controlScreen
 
+import android.bluetooth.BluetoothAdapter
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.longqifeng.R
 import com.example.longqifeng.controlScreen.ControlActivity
 import kotlinx.android.synthetic.main.control_screen_layout.*
+import tech.gujin.toast.ToastUtil
 
 
 class ControlActivity : AppCompatActivity() {

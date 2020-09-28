@@ -1,4 +1,4 @@
-package com.example.longqifeng.blueToothScreen
+package com.example.longqifeng.Item
 
 /**
  * 蓝牙设备

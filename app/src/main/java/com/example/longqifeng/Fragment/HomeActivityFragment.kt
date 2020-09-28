@@ -4,7 +4,7 @@
 *created at 2020/9/11 17:03
 *加载主页面控制列表布局
 */
-package com.example.longqifeng.homeScreen
+package com.example.longqifeng.Fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,8 +16,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.longqifeng.R
-import com.example.longqifeng.controlScreen.ControlActivity
-import com.example.longqifeng.controlScreen.ControlActivityFragment
+import com.example.longqifeng.Activity.ControlActivity
+import com.example.longqifeng.Item.HomeItem
 import kotlinx.android.synthetic.main.home_control_frag.*
 import kotlinx.android.synthetic.main.home_screen_layout.*
 

@@ -1,6 +1,5 @@
-package com.example.longqifeng.homeScreen
+package com.example.longqifeng.Activity
 
-import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -8,8 +7,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.longqifeng.R
-import com.example.longqifeng.blueToothScreen.BlueToothActivity
-import tech.gujin.toast.ToastUtil
 
 
 class HomeActivity : AppCompatActivity() {
@@ -37,7 +34,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.bluetooth->{
-                val intent = Intent(this,BlueToothActivity::class.java)
+                val intent = Intent(this, BlueToothActivity::class.java)
                 startActivityForResult(intent,1)
             }
             else->{Toast.makeText(this,"Error",Toast.LENGTH_SHORT).show()}

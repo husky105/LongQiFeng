@@ -4,7 +4,7 @@
 *created at 2020/7/21 23:58
 */
 
-package com.example.longqifeng.homeScreen
+package com.example.longqifeng.Item
 
 class HomeItem(val RoomName:String,val DeviceStatus:String) {
     /*

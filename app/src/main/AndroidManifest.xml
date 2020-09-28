@@ -12,14 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".blueToothScreen.BlueToothActivity">
+        <activity android:name=".Activity.BlueToothActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".controlScreen.ControlActivity">
+        <activity android:name=".Activity.ControlActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".homeScreen.HomeActivity"
+            android:name=".Activity.HomeActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

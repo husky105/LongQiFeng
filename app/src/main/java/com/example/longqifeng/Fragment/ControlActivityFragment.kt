@@ -1,4 +1,4 @@
-package com.example.longqifeng.controlScreen
+package com.example.longqifeng.Fragment
 
 import android.graphics.Point
 import android.os.Bundle

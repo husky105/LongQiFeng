@@ -6,7 +6,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -14,12 +13,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
+import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.longqifeng.Adapter.BluetoothDeviceAdapter
 import com.example.longqifeng.R
 import com.example.longqifeng.Tool.BlueToothController
 import kotlinx.android.synthetic.main.bluetooth_screen_layout.*
+
 
 class BlueToothActivity : AppCompatActivity() {
     companion object {
@@ -47,6 +48,15 @@ class BlueToothActivity : AppCompatActivity() {
         val width: Int = metric.widthPixels
         val height: Int = metric.heightPixels
         initConstraintLayout(width, height)
+        //为Switch注册监听事件
+        bluetooth_turnOn_or_turnOff.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                requestTurnOnBlueTooth(buttonView)
+            } else {
+                turnOffBlueTooth(buttonView)
+            }
+        })
+        //setListViewHeightBasedOnChildren(bondedBluetoothDevice_listView)
     }
 
     private fun registerBluetoothReceiver() {
@@ -70,8 +80,8 @@ class BlueToothActivity : AppCompatActivity() {
      */
     private fun initUI() {
         mAdapter = BluetoothDeviceAdapter(mDeviceList, this)
-        bluetooth_layout_listView.adapter = mAdapter
-        bluetooth_layout_listView.setOnItemClickListener(bondDeviceClick)
+        bondedBluetoothDevice_listView.adapter = mAdapter
+        bondedBluetoothDevice_listView.setOnItemClickListener(bondDeviceClick)
     }
 
     private val mReceiver = object: BroadcastReceiver() {
@@ -97,6 +107,31 @@ class BlueToothActivity : AppCompatActivity() {
                 mDeviceList?.add(device)
                 mAdapter.notifyDataSetChanged()
             }
+            else if (BluetoothAdapter.ACTION_SCAN_MODE_CHANGED.equals(action)) {  //此处作用待细查
+                val scanMode = intent.getIntExtra(BluetoothAdapter.EXTRA_SCAN_MODE, 0)
+                //可查找的
+                if (scanMode == BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
+                    setProgressBarIndeterminateVisibility(true)
+                } else {
+                    setProgressBarIndeterminateVisibility(false)
+                }
+            }
+            else if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
+                val remoteDevice =
+                    intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
+                if (remoteDevice == null) {
+                    showToast("无设备")
+                    return
+                }
+                val status = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, 0)
+                if (status == BluetoothDevice.BOND_BONDED) {
+                    showToast("已绑定" + remoteDevice.name)
+                } else if (status == BluetoothDevice.BOND_BONDING) {
+                    showToast("正在绑定" + remoteDevice.name)
+                } else if (status == BluetoothDevice.BOND_NONE) {
+                    showToast("未绑定" + remoteDevice.name)
+                }
+            }
         }
     }
 
@@ -121,13 +156,13 @@ class BlueToothActivity : AppCompatActivity() {
             R.id.search_device -> {
                 mAdapter.refresh(mDeviceList)
                 mController.findDevice()
-                bluetooth_layout_listView.setOnItemClickListener(bondDeviceClick)
+                bondedBluetoothDevice_listView.setOnItemClickListener(bondDeviceClick)
             }
             R.id.bonded_device -> {
                 mBondedDeviceList =
                     mController.getBondedDeviceList() as MutableList<BluetoothDevice>
                 mAdapter.refresh(mBondedDeviceList)
-                bluetooth_layout_listView.setOnItemClickListener(null)
+                bondedBluetoothDevice_listView.setOnItemClickListener(null)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -145,12 +180,10 @@ class BlueToothActivity : AppCompatActivity() {
 
     public fun requestTurnOnBlueTooth(view: View?) {
         mController.turnOnBlueTooth(this, REQUEST_CODE)
-        is_blue_tooth_enable.setBackgroundColor(Color.parseColor("#3ae374"))
     }
 
     public fun turnOffBlueTooth(view: View?) {
         mController.turnOffBlueTooth()
-        is_blue_tooth_enable.setBackgroundColor(Color.parseColor("#b2bec3"))
     }
 
     private fun showToast(text: String) {

@@ -3,21 +3,19 @@
 *@author 泷
 *created at 2020/9/22 7:41
 */
-package com.example.longqifeng.Tool
+package com.example.longqifeng.Controller
 
-import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
-import android.content.Context
 import android.content.Intent
-import kotlin.collections.MutableSet
+import androidx.fragment.app.FragmentActivity
+import com.example.longqifeng.Fragment.BluetoothPageFragment
 
 public class BlueToothController {
-    private var mAdapter: BluetoothAdapter?
+    private var mAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
 
     init {
         //获取蓝牙适配器
-        mAdapter = BluetoothAdapter.getDefaultAdapter()
     }
 
     /**
@@ -37,7 +35,7 @@ public class BlueToothController {
      * @param activity Activity
      * @param requestCode Int
      */
-    public fun turnOnBlueTooth(activity: Activity,requestCode:Int){
+    public fun turnOnBlueTooth(activity: FragmentActivity, requestCode:Int){
         val intent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
         activity.startActivityForResult(intent, requestCode)
     }
@@ -46,7 +44,7 @@ public class BlueToothController {
      * 打开蓝牙可见性
      * @param context Context
      */
-    public fun enableVisibly(context: Context){
+    public fun enableVisibly(context: BluetoothPageFragment){
         val discoverableIntent:Intent = Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE)
         discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,300) //设置时长为5分钟
         context.startActivity(discoverableIntent)
@@ -55,7 +53,7 @@ public class BlueToothController {
     /**
      * 查找设备
      */
-    fun findDevice(){
+    fun findDevice(context: BluetoothPageFragment){
         assert(mAdapter!=null)
         mAdapter?.startDiscovery()
     }

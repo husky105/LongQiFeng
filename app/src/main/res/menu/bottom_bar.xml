@@ -8,5 +8,5 @@
         android:title="@string/deviceInfPage"/>
     <item
         android:id="@+id/loginPage"
-        android:title="@string/loginPage"/>
+        android:title="@string/login_page"/>
 </menu>

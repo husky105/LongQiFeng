@@ -21,7 +21,7 @@ import com.example.longqifeng.Item.HomeItem
 import kotlinx.android.synthetic.main.home_control_frag.*
 import kotlinx.android.synthetic.main.home_screen_layout.*
 
-class HomeActivityFragment:Fragment() {
+open class HomePageFragment:Fragment() {
     private var isTwoPane = false
 
     //数据源
@@ -60,7 +60,7 @@ class HomeActivityFragment:Fragment() {
                 val HomeItem = HomeItemList[holder.adapterPosition]
                 if (isTwoPane){
                     //如果是双页模式，刷新ControlActivityFragment内容
-                    val fragment = controlActivityFag as ControlActivityFragment
+                    val fragment = controlActivityFag as ControlPageFragment
                     fragment.refresh(HomeItem.RoomName,HomeItem.DeviceStatus)
                 }else{
                     //如果是单页模式，直接启动HomeActivity

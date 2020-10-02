@@ -1,17 +1,19 @@
 package com.example.longqifeng.Adapter
 
 import android.bluetooth.BluetoothDevice
-import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import com.example.longqifeng.R
 
-class BluetoothDeviceAdapter(private var mData: List<BluetoothDevice>,private var mContext: Context) : BaseAdapter() {
+class BluetoothDeviceAdapter(
+    private var mData: List<BluetoothDevice>,
+    private var mContext: FragmentActivity?
+) : BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view:View
         //复用view，优化性能

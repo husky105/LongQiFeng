@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
     <fragment
         android:id="@+id/controlActivityFag"
-        android:name="com.example.longqifeng.Fragment.ControlActivityFragment"
+        android:name="com.example.longqifeng.Fragment.ControlPageFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>

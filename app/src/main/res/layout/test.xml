@@ -6,32 +6,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:columnCount="4"
-        android:rowCount="2">
-        <Button
-            android:layout_column="0"
-            android:layout_row="0"
-            android:layout_rowSpan="2"
-            android:layout_columnSpan="2"
-            android:layout_gravity="fill"
-            android:text="22"/>
-        <Button
-            android:layout_rowSpan="1"
-            android:layout_columnSpan="2"
-            android:layout_gravity="fill_horizontal"
-            android:text="21" />
-        <Button
-            android:layout_rowSpan="1"
-            android:layout_columnSpan="1"
-            android:text="11"/>
-        <Button
-            android:layout_rowSpan="1"
-            android:layout_columnSpan="1"
-            android:text="11"/>
-    </GridLayout>
-
 </LinearLayout>

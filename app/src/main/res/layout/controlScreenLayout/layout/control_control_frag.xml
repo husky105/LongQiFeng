@@ -14,7 +14,7 @@
         android:columnCount="4">
         <TextView
             android:width="0dp"
-            android:text="@string/roomName"
+            android:text="@string/room_name"
             android:layout_columnWeight="1"
             android:gravity="center"/>
         <TextView
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/DeviceStatusSetting"
+            android:text="@string/device_status_setting"
             android:padding="2dp"
             android:layout_gravity="fill"
             />
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:text="@string/windowAngleControl" />
+            android:text="@string/window_angle_control" />
 
         <SeekBar
             android:layout_width="match_parent"
@@ -69,9 +69,4 @@
             android:maxHeight="4dp"
             android:minHeight="4dp" />
     </LinearLayout>
-
-    <include layout="@layout/bottom_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
 </LinearLayout>

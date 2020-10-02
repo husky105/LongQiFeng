@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.longqifeng.R
 import kotlinx.android.synthetic.main.control_control_frag.*
 
-class ControlActivityFragment : Fragment() {
+class ControlPageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

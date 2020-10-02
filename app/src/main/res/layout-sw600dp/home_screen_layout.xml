@@ -6,7 +6,7 @@
     android:baselineAligned="false">
     <fragment
         android:id="@+id/homeActivityFag"
-        android:name="com.example.longqifeng.Fragment.HomeActivityFragment"
+        android:name="com.example.longqifeng.Fragment.HomePageFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"/>
@@ -17,7 +17,7 @@
         android:layout_weight="3">
         <fragment
             android:id="@+id/controlActivityFag"
-            android:name="com.example.longqifeng.Fragment.ControlActivityFragment"
+            android:name="com.example.longqifeng.Fragment.ControlPageFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />

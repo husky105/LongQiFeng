@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.longqifeng.R
-import com.example.longqifeng.Fragment.ControlActivityFragment
+import com.example.longqifeng.Fragment.ControlPageFragment
 import kotlinx.android.synthetic.main.control_screen_layout.*
 
 
@@ -26,7 +26,7 @@ class ControlActivity : AppCompatActivity() {
         val roomName = intent.getStringExtra("roomName")
         val deviceStatus = intent.getStringExtra("deviceStatus")
         if (roomName!=null&&deviceStatus!=null){
-            val fragment = controlActivityFag as ControlActivityFragment
+            val fragment = controlActivityFag as ControlPageFragment
             fragment.refresh(roomName,deviceStatus)
         }
     }

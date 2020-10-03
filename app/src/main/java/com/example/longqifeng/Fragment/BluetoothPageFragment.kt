@@ -9,16 +9,21 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.longqifeng.Adapter.BluetoothDeviceAdapter
 import com.example.longqifeng.Controller.BlueToothController
 import com.example.longqifeng.R
+import com.example.longqifeng.connect.ConnectThread
+import com.example.longqifeng.connect.Constant
 import kotlinx.android.synthetic.main.bluetooth_screen_frag.*
 import kotlinx.android.synthetic.main.bluetooth_screen_headview.*
 
@@ -32,9 +37,12 @@ class BluetoothPageFragment : Fragment() {
     private var mDeviceList: MutableList<BluetoothDevice> = ArrayList()
 
     private val mController: BlueToothController = BlueToothController()
+    private val mUIHandler: Handler = MyHandler()
 
     private var mToast: Toast? = null
-    private lateinit var mAdapter: BluetoothDeviceAdapter //已绑定设备Adapter
+    private lateinit var mAdapter: BluetoothDeviceAdapter
+
+    private var mConnectThread: ConnectThread? = null
 
     override fun onAttach(activity: Activity) {
         //注册广播
@@ -63,10 +71,10 @@ class BluetoothPageFragment : Fragment() {
         //为Switch注册监听事件
         bluetooth_turnOn_or_turnOff?.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                Toast.makeText(context, "打开蓝牙", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, "打开蓝牙", Toast.LENGTH_SHORT).show()
                 requestTurnOnBlueTooth(buttonView)
             } else {
-                Toast.makeText(context, "关闭蓝牙", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, "关闭蓝牙", Toast.LENGTH_SHORT).show()
                 turnOffBlueTooth(buttonView)
             }
         })
@@ -83,13 +91,13 @@ class BluetoothPageFragment : Fragment() {
             if (isChecked) {
                 mAdapter.refresh(mDeviceList)
                 mController.findDevice(this)
-                BluetoothDevice_listView.setOnItemClickListener(bondDeviceClick)
+                BluetoothDevice_listView.onItemClickListener = bondDeviceClick
                 bluetooth_textView.setText(R.string.available_bluetooth)
             } else {
                 mBondedDeviceList =
                     mController.getBondedDeviceList() as MutableList<BluetoothDevice>
                 mAdapter.refresh(mBondedDeviceList)
-                BluetoothDevice_listView.setOnItemClickListener(bondDeviceClick)
+                BluetoothDevice_listView.onItemClickListener = bondedDeviceClick
                 bluetooth_textView.setText(R.string.bonded_bluetooth)
             }
         })
@@ -123,14 +131,14 @@ class BluetoothPageFragment : Fragment() {
      * 初始化界面
      */
     private fun initUI() {
-        mAdapter = BluetoothDeviceAdapter(mDeviceList, activity)
-        BluetoothDevice_listView?.adapter = mAdapter
-        BluetoothDevice_listView?.setOnItemClickListener(bondDeviceClick)
-
         //添加布局
         val headView: View =
             layoutInflater.inflate(R.layout.bluetooth_screen_headview, null)
         BluetoothDevice_listView?.addHeaderView(headView)
+
+        mAdapter = BluetoothDeviceAdapter(mDeviceList, activity)
+        BluetoothDevice_listView?.adapter = mAdapter
+        //BluetoothDevice_listView?.setOnItemClickListener(bondDeviceClick)
 
         val footerView: View =
             layoutInflater.inflate(R.layout.bluetooth_screen_footerview, null)
@@ -203,6 +211,38 @@ class BluetoothPageFragment : Fragment() {
         mController.turnOffBlueTooth()
     }
 
+    private val bondDeviceClick =
+        OnItemClickListener { adapterView, view, i, l ->
+            val device = mDeviceList[l.toInt()]
+            //Log.d("MyTest",i.toString()+" "+l.toString()+" "+(l.toInt()+1).toString())
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                device.createBond()
+            }
+        }
+
+    private val bondedDeviceClick =
+        OnItemClickListener { _, _, i, l: Long ->
+            val device = mBondedDeviceList[l.toInt()]
+            //Log.d("MyTest",i.toString()+" "+l.toString()+" "+(l.toInt()+1).toString())
+            if (mConnectThread != null) {
+                mConnectThread!!.cancel()
+            }
+            mConnectThread = ConnectThread(device, mController.getAdapter())
+            mConnectThread!!.start()
+        }
+
+    inner class MyHandler : Handler() {
+        override fun handleMessage(message: Message) {
+            super.handleMessage(message)
+            when (message.what) {
+                Constant.MSG_GOT_DATA -> showToast("data:" + message.obj.toString())
+                Constant.MSG_ERROR -> showToast("error:" + message.obj.toString())
+                Constant.MSG_CONNECTED_TO_SERVER -> showToast("连接到服务端")
+                Constant.MSG_GOT_A_CLINET -> showToast("找到服务端")
+            }
+        }
+    }
+
     private fun showToast(text: String) {
         if (mToast == null) {
             mToast = Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT)
@@ -210,26 +250,5 @@ class BluetoothPageFragment : Fragment() {
             mToast!!.setText(text)
         }
         mToast!!.show()
-    }
-
-    private var bondDeviceClick = object: AdapterView.OnItemClickListener {
-        /**
-         * 获取蓝牙设备进行绑定
-         * @param parent AdapterView<*>
-         * @param view View
-         * @param position Int
-         * @param id Long
-         */
-        override fun onItemClick(
-            parent: AdapterView<*>?,
-            view: View?,
-            position: Int,
-            id: Long
-        ) {
-            val device = mDeviceList[position]
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                device.createBond()
-            }
-        }
     }
 }

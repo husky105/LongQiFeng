@@ -60,20 +60,20 @@ class HomeActivity : AppCompatActivity() {
      * @param menu Menu
      * @return Boolean
      */
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.main, menu)
+//        return true
+//    }
 
     /**
      * Home页工具栏选项选择
      * @param item MenuItem
      * @return Boolean
      */
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            else->{Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()}
-        }
-        return true
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when(item.itemId){
+//            else->{Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()}
+//        }
+//        return true
+//    }
 }

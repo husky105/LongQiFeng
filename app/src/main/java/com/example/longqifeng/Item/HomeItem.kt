@@ -1,13 +1,9 @@
-/*
-*Home页面item标签类
-*@author 泷
-*created at 2020/7/21 23:58
-*/
-
 package com.example.longqifeng.Item
 
-class HomeItem(val RoomName:String,val DeviceStatus:String) {
-    /*
-    *RoomName 房间名 DeviceStatus 设备状态
-    */
-}
+/**
+ * 主页面Item
+ * @property RoomName String
+ * @property DeviceStatus String
+ * @constructor
+ */
+class HomeItem(val RoomName:String,val DeviceStatus:String) {}

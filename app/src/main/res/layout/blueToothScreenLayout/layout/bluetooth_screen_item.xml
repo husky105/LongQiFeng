@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:descendantFocusability="blocksDescendants">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -34,13 +35,13 @@
                 android:layout_marginTop="5sp"
                 app:layout_constraintStart_toStartOf="@+id/bluetooth_device_name"
                 app:layout_constraintTop_toBottomOf="@id/bluetooth_device_name" />
-            <ImageButton
-                android:layout_width="25sp"
-                android:layout_height="25sp"
-                android:src="@drawable/arrow"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_margin="15sp"/>
+<!--            <ImageButton-->
+<!--                android:layout_width="25sp"-->
+<!--                android:layout_height="25sp"-->
+<!--                android:src="@drawable/arrow"-->
+<!--                app:layout_constraintRight_toRightOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                android:layout_margin="15sp"/>-->
         </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</LinearLayout>

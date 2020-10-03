@@ -38,6 +38,8 @@ class BluetoothDeviceAdapter(
         return view
     }
 
+
+
     override fun getCount() = mData.size
 
     override fun getItem(position: Int): BluetoothDevice {

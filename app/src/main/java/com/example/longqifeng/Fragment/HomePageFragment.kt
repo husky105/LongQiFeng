@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.longqifeng.R
 import com.example.longqifeng.Activity.ControlActivity
-import com.example.longqifeng.Item.HomeItem
+import com.example.longqifeng.Model.HomeItem
 import kotlinx.android.synthetic.main.home_control_frag.*
 import kotlinx.android.synthetic.main.home_screen_layout.*
 

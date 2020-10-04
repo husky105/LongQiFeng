@@ -11,7 +11,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,8 +21,8 @@ import androidx.fragment.app.Fragment
 import com.example.longqifeng.Adapter.BluetoothDeviceAdapter
 import com.example.longqifeng.Controller.BlueToothController
 import com.example.longqifeng.R
-import com.example.longqifeng.connect.ConnectThread
-import com.example.longqifeng.connect.Constant
+import com.example.longqifeng.Connect.ConnectThread
+import com.example.longqifeng.Connect.Constant
 import kotlinx.android.synthetic.main.bluetooth_screen_frag.*
 import kotlinx.android.synthetic.main.bluetooth_screen_headview.*
 

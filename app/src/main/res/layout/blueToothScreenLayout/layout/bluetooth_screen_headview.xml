@@ -122,7 +122,9 @@
                 android:minHeight="10sp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent"
+                android:thumb="@drawable/switch_thumb_selctor"
+                android:track="@drawable/switch_track_selctor"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -159,7 +161,9 @@
                 android:minHeight="10sp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent"
+                android:thumb="@drawable/switch_thumb_selctor"
+                android:track="@drawable/switch_track_selctor"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -196,7 +200,9 @@
                 android:minHeight="10sp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent"
+                android:thumb="@drawable/switch_thumb_selctor"
+                android:track="@drawable/switch_track_selctor"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
     <TextView

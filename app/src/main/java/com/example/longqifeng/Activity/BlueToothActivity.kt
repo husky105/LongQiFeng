@@ -29,5 +29,4 @@ class BlueToothActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.bluetooth_screen_layout)
     }
-
 }

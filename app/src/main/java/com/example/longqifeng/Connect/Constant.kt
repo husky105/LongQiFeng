@@ -1,4 +1,4 @@
-package com.example.longqifeng.connect
+package com.example.longqifeng.Connect
 
 class Constant {
     companion object {

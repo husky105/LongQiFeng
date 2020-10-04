@@ -31,6 +31,7 @@ android {
     sourceSets {
         main {
             res.srcDirs = [
+                    'src/main/res/layout/loginScreenLayout',
                     'src/main/res/layout/homeScreenLayout',
                     'src/main/res/layout/controlScreenLayout',
                     'src/main/res/layout/globalPlacement',
@@ -74,6 +75,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.android.databinding:compiler:4.0.1'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation files('libs\\mysql-connector-java-5.1.46-bin.jar')
     // Testing Fragments in Isolation
     debugImplementation "androidx.fragment:fragment-testing:1.2.5"
     testImplementation 'junit:junit:4.13'

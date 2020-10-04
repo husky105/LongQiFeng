@@ -1,19 +1,17 @@
 package com.example.longqifeng.Activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.example.longqifeng.Adapter.FragmentAdapter
 import com.example.longqifeng.Fragment.BluetoothPageFragment
-import com.example.longqifeng.Fragment.ControlPageFragment
 import com.example.longqifeng.Fragment.HomePageFragment
 import com.example.longqifeng.R
 import kotlinx.android.synthetic.main.home_screen_layout.*
+import java.sql.Connection
+import java.sql.DriverManager
+import java.sql.SQLException
 
 
 class HomeActivity : AppCompatActivity() {
@@ -76,4 +74,5 @@ class HomeActivity : AppCompatActivity() {
 //        }
 //        return true
 //    }
+
 }

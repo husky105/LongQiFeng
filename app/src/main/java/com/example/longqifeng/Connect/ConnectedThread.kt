@@ -1,4 +1,4 @@
-package com.example.longqifeng.connect
+package com.example.longqifeng.Connect
 
 import android.bluetooth.BluetoothSocket
 import android.os.Handler

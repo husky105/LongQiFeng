@@ -1,4 +1,4 @@
-package com.example.longqifeng.Item
+package com.example.longqifeng.Model
 
 /**
  * 蓝牙设备
